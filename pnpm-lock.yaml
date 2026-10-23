@@ -6,8 +6,8 @@ importers:
   .:
     configDependencies:
       ras-stack:
-        specifier: 5.0.0-next.3
-        version: 5.0.0-next.3
+        specifier: 5.0.0
+        version: 5.0.0
     packageManagerDependencies:
       pnpm:
         specifier: 12.14.0
@@ -97,8 +97,8 @@ packages:
     engines: {node: '>=18.*'}
     hasBin: true
 
-  ras-stack@5.0.0-next.3:
-    resolution: {integrity: sha512-WcJDNA7Qe+py+cpvBeUEGqBVEZ2yl0S9pjA23jzS245GHuUizO3d0uFr/p0LNILAfeOnKW4BZnhirFpbPr3NnQ==}
+  ras-stack@5.0.0:
+    resolution: {integrity: sha512-HPR0bJcEUZBM5GzsRwOj4cVo70Ra+CvpyUq4RYIBVAn1OimnWq3CQtPeG/42NbNLma5iQRAOPczvrW2nl63ihA==}
 
 snapshots:
 
@@ -161,7 +161,7 @@ snapshots:
       '@pnpm/exe.win32-arm64': 12.14.0
       '@pnpm/exe.win32-x64': 12.14.0
 
-  ras-stack@5.0.0-next.3: {}
+  ras-stack@5.0.0: {}
 
 ---
 lockfileVersion: '9.0'
@@ -177,8 +177,8 @@ importers:
   .:
     dependencies:
       ras-stack:
-        specifier: 5.0.0-next.3
-        version: 5.0.0-next.3
+        specifier: 5.0.0
+        version: 5.0.0
     devDependencies:
       linkedom:
         specifier: ^0.18.13
@@ -1146,8 +1146,8 @@ packages:
   property-graph@4.1.0:
     resolution: {integrity: sha512-AvPcP7XECNWy4LGmFQ77k7un4lSKM4eS29PTvW4ck95uYeLxXPWJM7hLuBqK91FaHqCcgJvIUCuNJjjxKE7VKQ==}
 
-  ras-stack@5.0.0-next.3:
-    resolution: {integrity: sha512-WcJDNA7Qe+py+cpvBeUEGqBVEZ2yl0S9pjA23jzS245GHuUizO3d0uFr/p0LNILAfeOnKW4BZnhirFpbPr3NnQ==}
+  ras-stack@5.0.0:
+    resolution: {integrity: sha512-HPR0bJcEUZBM5GzsRwOj4cVo70Ra+CvpyUq4RYIBVAn1OimnWq3CQtPeG/42NbNLma5iQRAOPczvrW2nl63ihA==}
     engines: {node: '>=24 <25'}
     hasBin: true
     peerDependencies:
@@ -2006,7 +2006,7 @@ snapshots:
 
   property-graph@4.1.0: {}
 
-  ras-stack@5.0.0-next.3:
+  ras-stack@5.0.0:
     dependencies:
       '@changesets/parse': 1.0.0
       '@manypkg/get-packages': 3.1.0
