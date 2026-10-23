@@ -29,9 +29,9 @@ The fit is set by `TENON_CLEARANCE` and `RIB` at the top of `src/parts.mjs`. Eac
 
 Every push to `main` builds the site and deploys it to [posthog-logo-3d.ras.sh](https://posthog-logo-3d.ras.sh) as a static-assets [Cloudflare Worker](https://developers.cloudflare.com/workers/static-assets/) through `.github/workflows/deploy.yml`. Pull requests run the same build without deploying. When a push changes `src/` or `bambu/`, CI also publishes the 3MF and STLs as a GitHub release before deploying, so older versions stay downloadable. CI uses the pinned Bambu Studio Linux AppImage, so the 3MF does not depend on whatever version is installed locally.
 
-The workflow needs two repository secrets: `CLOUDFLARE_API_TOKEN`, a token with the "Edit Cloudflare Workers" template, and `CLOUDFLARE_ACCOUNT_ID`.
+The workflow needs two repository secrets: `CLOUDFLARE_API_TOKEN`, a token with Workers Scripts (Edit), Account Settings (Read), and Memberships (Read), and `CLOUDFLARE_ACCOUNT_ID`.
 
-The domain is attached to the Worker in the Cloudflare dashboard, and `wrangler.jsonc` turns off the `workers.dev` URL. To preview the build locally, run `pnpm dev`.
+The domain is attached to the Worker in the Cloudflare dashboard. To preview the build locally, run `pnpm dev`.
 
 ## License
 
