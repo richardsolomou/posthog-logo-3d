@@ -2,9 +2,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-rm -rf dist
-mkdir -p dist/stl
+# dist/ is the site; build/ holds the downloads that CI publishes as a GitHub release.
+rm -rf dist build
+mkdir -p dist build
 cp site/* src/posthog-logomark.svg dist/
-node src/parts.mjs dist/stl
-mv dist/stl/assembled.glb dist/
-python3 -I bambu/build.py dist/stl dist/posthog-logo.3mf
+node src/parts.mjs build
+mv build/assembled.glb dist/
+python3 -I bambu/build.py build build/posthog-logo.3mf
+for f in build/*.stl; do mv "$f" "build/posthog-logo-$(basename "$f")"; done

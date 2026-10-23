@@ -3,4 +3,6 @@
   "name": "posthog-logo-3d",
   "compatibility_date": "2026-10-23",
   "assets": { "directory": "./dist" },
+  // Served at posthog-logo-3d.ras.sh, a custom domain attached in the Cloudflare dashboard.
+  "workers_dev": false,
 }

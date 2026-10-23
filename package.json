@@ -2,6 +2,7 @@
   "name": "posthog-logo-3d",
   "private": true,
   "description": "A 3D printable PostHog logo, split by color.",
+  "homepage": "https://posthog-logo-3d.ras.sh",
   "license": "MIT",
   "author": {
     "name": "Richard Solomou",
