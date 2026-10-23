@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+rm -rf dist
+mkdir -p dist/stl
+cp site/* src/posthog-logomark.svg dist/
+node src/parts.mjs dist/stl
+mv dist/stl/assembled.glb dist/
+python3 -I bambu/build.py dist/stl dist/posthog-logo-x2d.3mf

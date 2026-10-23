@@ -1,0 +1,32 @@
+{
+  "name": "posthog-logo-3d",
+  "private": true,
+  "description": "A 3D printable PostHog logo, split by color.",
+  "license": "MIT",
+  "author": {
+    "name": "Richard Solomou",
+    "email": "richard@solomou.dev",
+    "url": "https://solomou.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardsolomou/posthog-logo-3d"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "bin/build",
+    "dev": "wrangler dev",
+    "check": "ras format --check . && ras lint .",
+    "fix": "ras format . && ras lint --fix ."
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.13",
+    "manifold-3d": "3.5.4",
+    "three": "^0.186.1",
+    "wrangler": "^4.151.0"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "packageManager": "pnpm@12.14.0"
+}

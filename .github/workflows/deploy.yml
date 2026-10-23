@@ -1,0 +1,65 @@
+name: Deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  BAMBU_RELEASE: v02.08.02.61
+  BAMBU_APPIMAGE: BambuStudio_ubuntu24.04-v02.08.02.61-20260820225108.AppImage
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup JavaScript
+        uses: richardsolomou/ras-stack/actions/setup-js@v1
+
+      - name: Check RAS sync
+        run: pnpm exec ras sync --check
+
+      - name: Lint
+        run: pnpm check
+
+      - name: Install Bambu Studio libraries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends libgtk-3-0t64 libwebkit2gtk-4.1-0 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0 libgl1 libegl1
+
+      - name: Cache Bambu Studio
+        id: bambu-cache
+        uses: actions/cache@v6
+        with:
+          path: squashfs-root
+          key: ${{ env.BAMBU_APPIMAGE }}
+
+      - name: Download Bambu Studio
+        if: steps.bambu-cache.outputs.cache-hit != 'true'
+        run: |
+          gh release download "$BAMBU_RELEASE" -R bambulab/BambuStudio -p "$BAMBU_APPIMAGE"
+          chmod +x "$BAMBU_APPIMAGE"
+          "./$BAMBU_APPIMAGE" --appimage-extract > /dev/null
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build
+        run: pnpm build
+        env:
+          BAMBU_STUDIO: ${{ github.workspace }}/squashfs-root/AppRun
+          BAMBU_PRESETS: ${{ github.workspace }}/squashfs-root/resources/profiles/BBL
+
+      - name: Deploy
+        if: github.event_name != 'pull_request'
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

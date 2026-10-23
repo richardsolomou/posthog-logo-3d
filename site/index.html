@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PostHog logo, 3D printable</title>
+    <link rel="icon" href="posthog-logomark.svg" />
+    <meta
+      name="description"
+      content="A 3D printable PostHog logo, split by color, with built-in press-fit joints."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151515;
+        --muted: #5b5b55;
+        --line: #d6d6cf;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--ink);
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: radial-gradient(circle at 40% 40%, #fdfdf8, #e5e7e0);
+      }
+      body {
+        display: grid;
+        grid-template-columns: 1fr 22rem;
+      }
+      #viewer {
+        position: relative;
+        min-height: 60vh;
+      }
+      canvas {
+        display: block;
+        position: absolute;
+        inset: 0;
+      }
+      #explode {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+      aside {
+        overflow-y: auto;
+        padding: 1.5rem;
+        background: #fdfdf8;
+        border-left: 1px solid var(--line);
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+        font-size: 1.4rem;
+      }
+      h2 {
+        margin: 1.75rem 0 0.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+      p,
+      li {
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      p {
+        margin: 0.5rem 0;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      ol {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+      button,
+      .primary {
+        font: inherit;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--ink);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .primary {
+        display: block;
+        margin-top: 1rem;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        background: var(--ink);
+        color: #fff;
+      }
+      .parts li {
+        display: grid;
+        grid-template-columns: 1rem 1fr auto;
+        gap: 0.6rem;
+        align-items: center;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .swatch {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 3px;
+        border: 1px solid #0003;
+      }
+      .parts small {
+        display: block;
+        color: var(--muted);
+      }
+      a {
+        color: inherit;
+      }
+      @media (max-width: 760px) {
+        body {
+          grid-template-columns: 1fr;
+          grid-template-rows: 60vh auto;
+          height: auto;
+        }
+        aside {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main id="viewer"><button id="explode">Explode</button></main>
+    <aside>
+      <h1>PostHog logo, 3D printable</h1>
+      <p>
+        About 104 × 56 × 8 mm, split into one piece per color. It looks the same from both sides,
+        and the pieces press together with built-in joints.
+      </p>
+      <a class="primary" href="posthog-logo-x2d.3mf" download
+        >Download Bambu Studio project (.3mf)</a
+      >
+      <p>
+        <small
+          >Set up for the Bambu Lab X2D: one plate, printed by object, supports off, about 34
+          minutes. For other printers, import it and change the printer, or use the STLs.</small
+        >
+      </p>
+
+      <h2>Parts</h2>
+      <ul class="parts">
+        <li>
+          <span class="swatch" style="background: #0056b8"></span>
+          <span>Blue stripe<small>Bambu PLA Basic Cobalt Blue</small></span>
+          <a href="stl/blue.stl" download="posthog-logo-blue.stl">STL</a>
+        </li>
+        <li>
+          <span class="swatch" style="background: #ff6a13"></span>
+          <span>Orange stripe<small>Bambu PLA Basic Orange</small></span>
+          <a href="stl/orange.stl" download="posthog-logo-orange.stl">STL</a>
+        </li>
+        <li>
+          <span class="swatch" style="background: #fec600"></span>
+          <span>Yellow stripe<small>Bambu PLA Basic Sunflower Yellow</small></span>
+          <a href="stl/yellow.stl" download="posthog-logo-yellow.stl">STL</a>
+        </li>
+        <li>
+          <span class="swatch" style="background: #000"></span>
+          <span>Head<small>Bambu PLA Basic Black</small></span>
+          <a href="stl/head.stl" download="posthog-logo-head.stl">STL</a>
+        </li>
+        <li>
+          <span class="swatch" style="background: #fff"></span>
+          <span>Eye<small>Bambu PLA Basic Jade White</small></span>
+          <a href="stl/eye.stl" download="posthog-logo-eye.stl">STL</a>
+        </li>
+      </ul>
+
+      <h2>Assembly</h2>
+      <ol>
+        <li>
+          Each stripe has two tabs on its right edge. Slide them into the pockets on the next piece,
+          from left to right.
+        </li>
+        <li>
+          Crush ribs on the tabs make it a firm press fit. A drop of superglue in each pocket makes
+          it permanent.
+        </li>
+        <li>
+          Drop the eye into the head and glue it. It has a little clearance so it doesn't bind.
+        </li>
+      </ol>
+
+      <h2>Source</h2>
+      <p>
+        The model is generated from the logo SVG.
+        <a href="https://github.com/richardsolomou/posthog-logo-3d">View it on GitHub</a>.
+      </p>
+    </aside>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+      import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+      const viewer = document.getElementById("viewer");
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(devicePixelRatio);
+      renderer.toneMapping = THREE.NeutralToneMapping;
+      viewer.prepend(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      scene.environment = new THREE.PMREMGenerator(renderer).fromScene(
+        new RoomEnvironment(),
+        0.04,
+      ).texture;
+      scene.environmentIntensity = 0.5;
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(40, 80, 100);
+      scene.add(light);
+
+      const camera = new THREE.PerspectiveCamera(35, 1, 1, 2000);
+      camera.position.set(-90, 70, 160);
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      // How far each part moves when exploded, in steps along x and z.
+      const SPREAD = {
+        blue: [-1.5, 0],
+        orange: [-0.5, 0],
+        yellow: [0.5, 0],
+        head: [1.5, 0],
+        eye: [2.1, 1],
+      };
+      let parts = [];
+      let target = 0;
+      let t = 0;
+      new GLTFLoader().load("assembled.glb", (gltf) => {
+        scene.add(gltf.scene);
+        parts = gltf.scene.children.map((o) => ({
+          o,
+          x: o.position.x,
+          z: o.position.z,
+          s: SPREAD[o.name],
+        }));
+      });
+
+      const button = document.getElementById("explode");
+      const setTarget = (value) => {
+        target = value;
+        button.textContent = target ? "Assemble" : "Explode";
+      };
+      button.onclick = () => setTarget(target ? 0 : 1);
+      if (location.hash.includes("exploded")) setTarget((t = 1));
+
+      // Radius in mm that holds the exploded parts; the camera backs off until it fits either way.
+      const FIT_RADIUS = 80;
+      new ResizeObserver(() => {
+        const { clientWidth: w, clientHeight: h } = viewer;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+        const halfFov = Math.atan(
+          Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * Math.min(1, camera.aspect),
+        );
+        camera.position.setLength(FIT_RADIUS / Math.sin(halfFov));
+      }).observe(viewer);
+
+      renderer.setAnimationLoop(() => {
+        t += (target - t) * 0.08;
+        for (const p of parts) {
+          p.o.position.x = p.x + p.s[0] * 14 * t;
+          p.o.position.z = p.z + p.s[1] * 20 * t;
+        }
+        controls.update();
+        renderer.render(scene, camera);
+      });
+    </script>
+  </body>
+</html>
