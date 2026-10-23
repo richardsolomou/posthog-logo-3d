@@ -104,9 +104,11 @@ const prism = (cs, width) =>
     .extrude(width)
     .rotate([90, 0, 0])
     .translate([0, width / 2, 0]);
+const ribLength = L - 0.8;
+const ribHeight = 0.8;
 const ribs = [-1, 1].map((side) =>
-  Manifold.cube([L - 0.8, RIB * 2, 0.8], true).translate([
-    0.4 + (L - 0.8) / 2,
+  Manifold.cube([ribLength, RIB * 2, ribHeight], true).translate([
+    0.4 + ribLength / 2,
     (side * TENON_WIDTH) / 2,
     TENON_TOP - 1.1,
   ]),
@@ -145,7 +147,6 @@ const toMesh = (m, color) => {
 };
 
 fs.mkdirSync(outDir, { recursive: true });
-for (const f of fs.readdirSync(outDir)) if (f.endsWith(".stl")) fs.rmSync(path.join(outDir, f));
 const scene = new THREE.Scene();
 for (const [name, solid] of Object.entries(solids)) {
   if (solid.status() !== "NoError") throw new Error(`${name}: ${solid.status()}`);
@@ -177,7 +178,7 @@ fs.writeFileSync(
 );
 
 // Assembled, only the crush ribs may overlap a neighbour.
-const ribOverlap = 2 * (RIB - TENON_CLEARANCE) * 0.8 * (L - 0.8) * TENON_SPOTS.length;
+const ribOverlap = 2 * (RIB - TENON_CLEARANCE) * ribHeight * ribLength * TENON_SPOTS.length;
 const neighbours = new Set(SEAMS.map(({ left, right }) => `${left}/${right}`));
 const names = Object.keys(solids);
 for (let a = 0; a < names.length; a++)

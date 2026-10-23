@@ -14,7 +14,6 @@ permissions:
 
 env:
   BAMBU_RELEASE: v02.08.02.61
-  BAMBU_APPIMAGE: BambuStudio_ubuntu24.04-v02.08.02.61-20260820225108.AppImage
 
 jobs:
   deploy:
@@ -45,14 +44,14 @@ jobs:
         uses: actions/cache@v6
         with:
           path: squashfs-root
-          key: ${{ env.BAMBU_APPIMAGE }}
+          key: bambu-studio-${{ env.BAMBU_RELEASE }}
 
       - name: Download Bambu Studio
         if: steps.bambu-cache.outputs.cache-hit != 'true'
         run: |
-          gh release download "$BAMBU_RELEASE" -R bambulab/BambuStudio -p "$BAMBU_APPIMAGE"
-          chmod +x "$BAMBU_APPIMAGE"
-          "./$BAMBU_APPIMAGE" --appimage-extract > /dev/null
+          gh release download "$BAMBU_RELEASE" -R bambulab/BambuStudio -p 'BambuStudio_ubuntu24.04-*.AppImage' -O bambu.AppImage
+          chmod +x bambu.AppImage
+          ./bambu.AppImage --appimage-extract > /dev/null
         env:
           GH_TOKEN: ${{ github.token }}
 

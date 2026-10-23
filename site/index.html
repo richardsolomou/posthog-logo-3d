@@ -282,7 +282,6 @@
         button.textContent = target ? "Assemble" : "Explode";
       };
       button.onclick = () => setTarget(target ? 0 : 1);
-      if (location.hash.includes("exploded")) setTarget((t = 1));
 
       // Radius in mm that holds the exploded parts; the camera backs off until it fits either way.
       const FIT_RADIUS = 80;
