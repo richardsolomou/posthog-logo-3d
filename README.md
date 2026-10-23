@@ -12,7 +12,7 @@ pnpm build
 `pnpm build` writes the site to `dist/`:
 
 - `stl/*.stl` has one part per color, generated from `src/posthog-logomark.svg` by `src/parts.mjs`. The build fails if any two assembled parts overlap by more than the designed crush-rib interference.
-- `posthog-logo-x2d.3mf` is a Bambu Studio project for the Bambu Lab X2D: one plate, printed by object, with each part on its own Bambu PLA Basic color. `bambu/build.py` makes it with the Bambu Studio CLI, then slices it and fails if the G-code does not have exactly one filament change per extra color.
+- `posthog-logo.3mf` is a Bambu Studio project laid out on the Bambu Lab X2D plate, which Bambu Studio can sync to another printer: one plate, printed by object, with each part on its own Bambu PLA Basic color. `bambu/build.py` makes it with the Bambu Studio CLI, then slices it and fails if the G-code does not have exactly one filament change per extra color.
 - `index.html` and `assembled.glb` are the 3D viewer and download page.
 
 The 3MF step needs Bambu Studio. Locally it uses the macOS app in `/Applications` and its downloaded system presets. Set `BAMBU_STUDIO` and `BAMBU_PRESETS` to use a different binary or preset folder.
