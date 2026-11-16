@@ -28,9 +28,6 @@ jobs:
       - name: Setup JavaScript
         uses: richardsolomou/ras-stack/actions/setup-js@v1
 
-      - name: Check RAS sync
-        run: pnpm exec ras sync --check
-
       - name: Lint
         run: pnpm check
 

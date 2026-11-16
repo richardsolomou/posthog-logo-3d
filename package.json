@@ -17,12 +17,19 @@
   "scripts": {
     "build": "bin/build",
     "dev": "wrangler dev",
-    "check": "ras format --check . && ras lint .",
-    "fix": "ras format . && ras lint --fix ."
+    "lint": "oxlint --type-aware --deny-warnings .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "fix": "pnpm format && oxlint --type-aware --fix .",
+    "check": "pnpm format:check && pnpm lint"
   },
   "devDependencies": {
     "linkedom": "^0.18.13",
     "manifold-3d": "3.5.4",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2006",
+    "ras-stack": "^6.0.0",
     "three": "^0.186.1",
     "wrangler": "^4.151.0"
   },
