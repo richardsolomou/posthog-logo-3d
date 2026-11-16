@@ -19,7 +19,7 @@ pnpm build
 
 The 3MF step needs Bambu Studio. Locally it uses the macOS app in `/Applications` and its downloaded system presets. Set `BAMBU_STUDIO` and `BAMBU_PRESETS` to use a different binary or preset folder.
 
-Formatting and linting come from [ras-stack](https://github.com/richardsolomou/ras-stack), selected in `ras.config.ts`. `pnpm check` runs both, and `pnpm fix` applies them.
+Formatting ([Oxfmt](https://oxc.rs/docs/guide/usage/formatter)) and linting ([Oxlint](https://oxc.rs/docs/guide/usage/linter)) follow the [ras-stack](https://github.com/richardsolomou/ras-stack) `tooling` recipe, recorded in `ras-recipes.json`. `pnpm check` runs both, and `pnpm fix` applies them.
 
 ## Fit
 

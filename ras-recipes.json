@@ -1,0 +1,28 @@
+{
+  "source": "https://github.com/richardsolomou/ras-stack",
+  "recipes": {
+    "tooling": {
+      "version": 2,
+      "commit": "82fce4523ec914bd2e70aefd4bff84c10fb278c6",
+      "files": {
+        ".gitignore": ".gitignore",
+        ".oxfmtrc.json": ".oxfmtrc.json",
+        ".oxlintrc.json": ".oxlintrc.json",
+        "AGENTS.md": "AGENTS.md",
+        "package.json": "package.json",
+        "pnpm-workspace.yaml": "pnpm-workspace.yaml",
+        "tsconfig.json": null,
+        "vitest.config.ts": null
+      },
+      "notes": [
+        "Skips tsconfig.json, vitest.config.ts, and the typecheck and test scripts, because the project is plain JavaScript and Python with no TypeScript or tests.",
+        "Does not install typescript, vite, vitest, or @types/node, because nothing in the project uses them.",
+        "Keeps the build, dev, and fix scripts, because the project builds with bin/build, serves with wrangler dev, and the README documents pnpm fix.",
+        "Keeps pnpm 12.14.0 in packageManager, because it is newer than the recipe's pnpm and the lockfile is written by it.",
+        "Allows workerd to run build scripts in pnpm-workspace.yaml, because wrangler needs it.",
+        "Ignores .wrangler, .DS_Store, squashfs-root, and build in .gitignore, for wrangler state, the extracted Bambu Studio AppImage, and the release downloads.",
+        "Runs pnpm check from the Deploy workflow instead of the ci recipe's workflow, because that workflow already checks every pull request and push before building."
+      ]
+    }
+  }
+}

@@ -1,9 +1,8 @@
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - 'posthog-*'
+  - '@posthog/*'
+  - ras-stack
 allowBuilds:
   esbuild: true
   workerd: true
-minimumReleaseAge: 10080
-minimumReleaseAgeExclude:
-  - ras-stack@5.0.0
-configDependencies:
-  ras-stack: 5.0.0
-pnpmfile: node_modules/.pnpm-config/ras-stack/pnpmfile.mjs
